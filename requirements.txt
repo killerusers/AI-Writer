@@ -1,7 +1,6 @@
 requests
 typer[all]
 rich
-pysqlite3
 python-dotenv
 loguru
 openai
