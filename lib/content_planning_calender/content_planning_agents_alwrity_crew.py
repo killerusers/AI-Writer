@@ -208,7 +208,7 @@ def execute_tasks(agents, tasks):
     crew = Crew(
         agents=agents,
         tasks=tasks,
-        verbose=2,  # You can set it to 1 or 2 for different logging levels
+        verbose=1,  # You can set it to 1 or 2 for different logging levels
         #process=Process.sequential,
         #memory=True,
         language="en"
