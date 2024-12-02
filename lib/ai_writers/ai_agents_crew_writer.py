@@ -92,7 +92,7 @@ def execute_tasks(agents, tasks, lang):
     crew = Crew(
         agents=agents,
         tasks=tasks,
-        verbose=2,
+        verbose=1,
         language=lang
     )
     try:
