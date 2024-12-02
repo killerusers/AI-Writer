@@ -1,8 +1,6 @@
-
 requests
 typer[all]
 rich
-pysqlite3-binary
 python-dotenv
 loguru
 openai
@@ -26,7 +24,6 @@ plotly
 requests_html
 pytrends
 pytube
-pytubefix
 wordcloud
 prompt_toolkit
 ipython
@@ -40,7 +37,4 @@ gTTS
 streamlit-mic-recorder
 tinify
 cloudscraper
-xmlschema
-moviepy
-googlesearch-python
-streamlit-aggrid
+trendspy
