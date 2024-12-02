@@ -5,9 +5,7 @@ import os
 import json
 import base64
 from datetime import datetime
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 from lib.utils.config_manager import save_config
 from lib.utils.ui_setup import setup_ui
 from lib.utils.api_key_manager import check_all_api_keys
@@ -19,6 +17,9 @@ from lib.utils.alwrity_utils import ai_agents_team, ai_social_writer
 from lib.utils.file_processor import load_image, read_prompts, write_prompts
 from lib.utils.voice_processing import record_voice
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 def process_folder_for_rag(folder_path):
     """Placeholder for the process_folder_for_rag function."""
