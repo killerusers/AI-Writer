@@ -1,3 +1,5 @@
+--index-url https://pypi.org/simple
+
 requests
 typer[all]
 rich
@@ -24,6 +26,7 @@ plotly
 requests_html
 pytrends
 pytube
+pytubefix
 wordcloud
 prompt_toolkit
 ipython
