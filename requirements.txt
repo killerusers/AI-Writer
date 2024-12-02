@@ -1,5 +1,4 @@
 requests
-pysqlite3
 typer[all]
 rich
 python-dotenv
