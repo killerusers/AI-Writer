@@ -6,6 +6,8 @@ from crewai_tools import SerperDevTool
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 # Initialize session state variables if not already done
+
+
 if 'progress' not in st.session_state:
     st.session_state.progress = 0
 
