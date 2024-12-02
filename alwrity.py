@@ -1,7 +1,4 @@
 
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import os
@@ -19,6 +16,9 @@ from lib.utils.ui_setup import setup_ui, setup_tabs
 from lib.utils.alwrity_utils import ai_agents_team, ai_social_writer
 from lib.utils.file_processor import load_image, read_prompts, write_prompts
 from lib.utils.voice_processing import record_voice
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 def process_folder_for_rag(folder_path):
