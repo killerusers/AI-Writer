@@ -5,7 +5,9 @@ import os
 import json
 import base64
 from datetime import datetime
-
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from lib.utils.config_manager import save_config
 from lib.utils.ui_setup import setup_ui
 from lib.utils.api_key_manager import check_all_api_keys
