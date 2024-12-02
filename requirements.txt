@@ -39,3 +39,4 @@ streamlit-mic-recorder
 tinify
 cloudscraper
 trendspy
+pysqlite3-binary
