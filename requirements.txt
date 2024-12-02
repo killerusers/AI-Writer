@@ -41,3 +41,4 @@ cloudscraper
 trendspy
 pysqlite3-binary
 streamlit-aggrid
+googlesearch
