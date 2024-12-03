@@ -61,7 +61,7 @@ def fetch_google_trends_interest_overtime(keyword):
         df = pd.DataFrame({'date': data.index.date, keyword: data[keyword]})
         df['date'] = pd.to_datetime(df['date'])
         df = df.set_index('date')
-
+        print(df)
         plt.figure(figsize=(10, 6))
         plt.plot(df.index, df[keyword], label=keyword)
         plt.title(f'Interest Over Time for "{keyword}"')
@@ -114,10 +114,10 @@ def get_related_queries_and_save_csv(keywords, hl='IN', tz=360, cat=0, timeframe
             # Extract data from the result
 
             top_queries = data['top']
-            print(top_queries)
+            #print(top_queries)
             rising_queries = data['rising']
 
-            print(rising_queries)
+            #print(rising_queries)
             top_rising_queries = top_queries + rising_queries
 
             # Convert lists to DataFrames
@@ -428,6 +428,7 @@ def print_and_return_top_keywords(expanded_results_df, num_clusters=5):
 
     print(f"\n📢❗🚨 GTop Keywords for All Clusters:")
     table = tabulate(top_keywords_df, headers='keys', tablefmt='fancy_grid')
+    print(table)
     # Save the combined table to a file
     try:
         save_in_file(table)
