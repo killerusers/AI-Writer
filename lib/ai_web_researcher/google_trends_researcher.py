@@ -29,10 +29,31 @@ logger.add(sys.stdout,
            format="<level>{level}</level>|<green>{file}:{line}:{function}</green>| {message}"
            )
 
+def get_random_ip_and_port():
+    url = "https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        proxy_list = data.get('data', [])
+        if proxy_list:
+            random_proxy = random.choice(proxy_list)
+            ip_address = random_proxy.get('ip')
+            port = random_proxy.get('port')
+            return f"{ip_address}:{port}"
+        else:
+            print("no proxy")
+            return None
+    else:
+        print(f"error status：{response.status_code}")
+        return None
+
 
 def fetch_google_trends_interest_overtime(keyword):
     try:
         ts = Trends()
+        random_ip = get_random_ip_and_port()
+        ts.set_proxy(f'https://{random_ip}')
         data = ts.interest_over_time(keyword, timeframe='today 1-y', geo='US')
 
         #print(data.index.date)
@@ -81,14 +102,15 @@ def plot_interest_by_region(kw_list):
 def get_related_queries_and_save_csv(keywords, hl='IN', tz=360, cat=0, timeframe='today 12-m'):
     global df_top_queries, df_rising_queries
     try:
-        # Build model
+
         ts = Trends()
-        #ts.set_proxy('https://127.0.0.1:10809')
+        random_ip = get_random_ip_and_port()
+        ts.set_proxy(f'https://{random_ip}')
         for _ in keywords:
             #need random header
 
             data = ts.related_queries(_, geo=hl, cat=cat, timeframe=timeframe,
-                                      headers={'referer': 'https://www.google.co.in/'})
+                                      headers={'referer': 'https://www.google.com/'})
             # Extract data from the result
 
             top_queries = data['top']
@@ -135,7 +157,8 @@ def get_related_queries_and_save_csv(keywords, hl='IN', tz=360, cat=0, timeframe
 def get_related_topics_and_save_csv(search_keywords):
     try:
         ts = Trends()
-        #ts.set_proxy('https://127.0.0.1:10809')
+        random_ip = get_random_ip_and_port()
+        ts.set_proxy(f'https://{random_ip}')
         for _ in search_keywords:
             try:
                 data = ts.related_topics(_, geo="IN", cat=0, timeframe='today 12-m',
